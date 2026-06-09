@@ -1,186 +1,301 @@
-# Varta Assistant 💬
 
-Varta Assistant is a production-ready, beginner-friendly MERN stack application featuring an **embeddable AI chatbot widget** for websites, interactive **visitor onboarding**, a **smart context system** (powered by the Groq API), and a clean public **admin portal** for analytics and conversation logs.
+🤖 ConversaFlow AI
 
-This project is built with **simplicity** and **readability** as the first priority. It uses pure JavaScript, avoids overengineering, integrates Bootstrap for sleek responsive UI layouts, and utilizes a simple password gate for admin protection.
+---
+**A modern, AI-powered chatbot built with the MERN stack, designed for seamless integration and intelligent conversations.**
+
+ChatBot-AI is a **scalable, beginner-friendly**, and **production-ready** application that enables **real-time, context-aware conversations** with users. It features a **floating chat widget**, **visitor onboarding**, **admin analytics**, and **Groq API integration** for ultra-fast AI responses. Built with **simplicity and performance** in mind, it uses **React.js, Node.js, Express.js, and MongoDB** to deliver a robust and responsive experience.
 
 ---
 
-## 🚀 Core Features
-
-- 🔌 **Floating Chatbot Widget**: A floating chat widget that sits at the bottom-right of any webpage, loaded via a single script tag.
-- 🧑‍💻 **Visitor Onboarding**: On first chat, visitors provide their Name, Profession, and Goal to customize the AI's perspective.
-- 🧠 **Smart Context System**: Prefixes user inputs with visitor onboarding details to create highly personalized, context-aware AI interactions.
-- 📊 **Simple Admin Dashboard**: Read-only portal displaying metrics (messages, visitor count) and a searchable list of chat transcripts.
-- 🔒 **Browser Password Protection**: Access to `/admin` triggers a standard browser `window.prompt` password gate, checking against a hardcoded credential (`varta123`) without needing complex session databases.
-- 🎨 **Bootstrap & Minimal Styling**: Built using Bootstrap 5 via CDN, yielding a clean, fast, and responsive user experience.
+## 🌟 **Why ChatBot-AI?**
+✅ **Easy Integration**: Embed the chatbot widget with a **single line of code**.
+✅ **Personalized Interactions**: Collect visitor details (Name, Profession, Goal) to **tailor AI responses**.
+✅ **Admin Dashboard**: Monitor **metrics, visitor counts, and chat transcripts** in a clean, read-only portal.
+✅ **Responsive Design**: Works **flawlessly on desktop and mobile** devices.
+✅ **Production-Ready**: Deploy with confidence using **Render, Heroku, AWS, or any cloud provider**.
+✅ **Beginner-Friendly**: Clean, **well-documented code** with **no overengineering**.
 
 ---
 
-## 📁 Project Directory Structure
+## ✨ **Key Features**
+
+### 🔌 **Floating Chatbot Widget**
+- Embeddable via a **single `<script>` tag**.
+- Appears at the **bottom-right** of any webpage.
+- **Customizable** size, color, and behavior.
+
+### 🧑‍💻 **Visitor Onboarding**
+- Collects **Name, Profession, and Goal** on first interaction.
+- Uses this data to **personalize AI responses** dynamically.
+
+### 🧠 **Smart Context System**
+- Prefixes user inputs with **visitor details** for **context-aware conversations**.
+- Powered by the **Groq API** for **ultra-fast LLM responses**.
+
+### 📊 **Admin Dashboard**
+- **Read-only portal** for viewing:
+  - Total visitors, conversations, and messages.
+  - **Searchable chat transcripts**.
+  - **Profession breakdown** of visitors.
+
+### 🔒 **Password Protection**
+- Simple `window.prompt` password gate for `/admin` access.
+- Default password: `varta123` (customizable in `.env`).
+
+### 🎨 **Responsive UI**
+- Built with **Bootstrap 5** for a **sleek, fast, and mobile-friendly** experience.
+- **Desktop**: 400px × 600px popup with rounded corners.
+- **Mobile**: Scales to **100% width/height** for screens < 480px.
+
+### ☁️ **Production-Ready Deployment**
+- Compiles **React frontend** into the **Express backend** for single-port deployment.
+- Compatible with **Render, Heroku, AWS, and other cloud providers**.
+
+---
+
+## 📁 **Project Structure**
 
 ```text
-varta-assistant/
-├── frontend/             # React SPA (Vite, Bootstrap, Custom Router)
+ChatBot-AI/
+├── frontend/                     # React SPA (Vite, Bootstrap, Custom Router)
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── AdminDashboard.jsx  # Admin stats & chat viewer
-│   │   │   └── WidgetChat.jsx      # Onboarding form & Chat UI
-│   │   ├── App.jsx                 # Custom routing layer
-│   │   ├── index.css               # Custom CSS overrides
+│   │   │   ├── AdminDashboard.jsx # Admin stats & chat viewer
+│   │   │   ├── WidgetChat.jsx     # Onboarding form & Chat UI
+│   │   │   └── ChatWindow.jsx     # Main chat interface
+│   │   ├── App.jsx                # Custom routing layer
+│   │   ├── index.css              # Custom CSS overrides
 │   │   └── main.jsx
 │   └── index.html
-├── server/               # Express API Backend & MongoDB Schemas
-│   ├── models/           # Mongoose schemas
+├── server/                       # Express API Backend & MongoDB Schemas
+│   ├── models/                   # Mongoose schemas
 │   │   ├── Visitor.js
 │   │   ├── Conversation.js
 │   │   └── Message.js
-│   ├── public/           # Hosts static assets
-│   │   └── widget.js     # Loader script embedded on client sites
-│   ├── config.js         # Hardcoded password and prompt configuration
-│   └── server.js         # Main server router & database connector
-├── index.html            # Local client website embedding the widget
-└── package.json          # Root orchestration runner
+│   ├── public/                   # Static assets
+│   │   └── widget.js             # Loader script for client websites
+│   ├── config/                   # Configuration files
+│   │   └── env.js                # Environment variables
+│   ├── routes/                   # API routes
+│   │   ├── widgetRoutes.js       # Widget-related endpoints
+│   │   └── adminRoutes.js        # Admin dashboard endpoints
+│   └── server.js                 # Main server router & DB connector
+├── index.html                    # Demo website embedding the widget
+└── package.json                  # Root orchestration runner
 ```
 
 ---
 
-## 🛠️ Quick Start Guide
+## 🚀 **Quick Start Guide**
 
-### 1. Prerequisites
-- **Node.js** (v16+) installed.
-- **MongoDB** running locally (`mongodb://127.0.0.1:27017/varta_assistant`) or a MongoDB Atlas URI.
-- A **Groq API Key** (generate one for free at the [Groq Console](https://console.groq.com/)).
+### **Prerequisites**
+- **Node.js** (v16+)
+- **MongoDB** (local or Atlas URI)
+- **Groq API Key** ([Get one here](https://console.groq.com/))
 
-### 2. Configure Environment Variables
-Navigate to the `server/` directory, copy `.env.example` to `.env`, and fill in your details:
+---
+
+### **1. Clone the Repository**
 ```bash
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/varta_assistant
-GROQ_API_KEY=your_actual_groq_api_key_here
-ADMIN_PASSWORD=varta123
+git clone https://github.com/pushpakrai/ChatBot-AI-.git
+cd ChatBot-AI-
 ```
 
-### 3. Install Dependencies
-Run the installation command in the root folder of the project. This will automatically install dependencies in the root, frontend, and server directories:
+---
+
+### **2. Configure Environment Variables**
+Navigate to the `server/` directory, copy `.env.example` to `.env`, and update the following:
+```bash
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/chatbot_ai
+GROQ_API_KEY=your_groq_api_key_here
+ADMIN_PASSWORD=your_custom_password
+```
+
+---
+### **3. Install Dependencies**
+Run the following command in the **root folder** to install dependencies for all directories:
 ```bash
 npm run install-all
 ```
 
-### 4. Start Development Servers
-Start both the Express API and the Vite React server concurrently:
+---
+### **4. Start Development Servers**
 ```bash
 npm run dev
 ```
-- Frontend Dev Hub: [http://localhost:5173](http://localhost:5173)
-- Admin Portal: [http://localhost:5173/admin](http://localhost:5173/admin)
-- Express API Server: [http://localhost:5000](http://localhost:5000)
+- **Frontend Dev Hub**: [http://localhost:5173](http://localhost:5173)
+- **Admin Portal**: [http://localhost:5173/admin](http://localhost:5173/admin)
+- **Express API Server**: [http://localhost:5000](http://localhost:5000)
 
-### 5. Open the Demo Website
-Open the root `index.html` file in any browser (or double-click it in your file explorer). You will see the floating chat button appear at the bottom-right corner!
+---
+### **5. Test the Widget**
+Open the root `index.html` file in any browser. The **floating chat button** will appear at the bottom-right corner!
 
 ---
 
-## 🔌 Widget Embed Guide
+## 🔌 **Widget Embed Guide**
 
-### How to embed on any website:
-Insert this tag anywhere inside the `<body>` container of your HTML files:
-
+### **How to Embed on Any Website**
+Insert the following script tag **anywhere inside the `<body>`** of your HTML files:
 ```html
 <script src="http://localhost:5000/widget.js"></script>
 ```
+**Note**: Replace `http://localhost:5000` with your **production backend server domain** once deployed.
 
-*(Note: Replace `http://localhost:5000` with your production backend server domain once deployed).*
-
-### Sizing and Responsiveness:
-- **Desktop**: Renders as a popup window (400px wide, 600px tall) with rounded corners and soft drop shadow.
-- **Mobile (width < 480px)**: Seamlessly scales to take up 100% of the screen width and height.
+---
+### **Sizing and Responsiveness**
+| Device       | Dimensions               | Behavior                          |
+|--------------|--------------------------|-----------------------------------|
+| **Desktop**  | 400px × 600px            | Popup window with rounded corners |
+| **Mobile**   | 100% width/height        | Full-screen chat interface        |
 
 ---
 
-## 📊 API Endpoint Reference
+## 📡 **API Endpoint Reference**
 
 All JSON payloads are sent using the `Content-Type: application/json` header.
 
-### 1. Onboard Visitor (`POST /api/widget/onboard`)
-Creates a new visitor profile and initializes an active conversation session.
-- **Request Body**:
-  ```json
-  {
-    "name": "Jane Doe",
-    "profession": "Founder",
-    "goal": "Pricing check"
-  }
-  ```
-- **Response (201 Created)**:
-  ```json
-  {
-    "visitorId": "65f3a09e...",
-    "conversationId": "65f3a09f...",
-    "visitorName": "Jane Doe"
-  }
-  ```
+---
+### **1. Onboard Visitor**
+**Endpoint**: `POST /api/widget/onboard`
+**Description**: Creates a new visitor profile and initializes an active conversation session.
 
-### 2. Fetch History (`GET /api/widget/history/:visitorId`)
-Retrieves previous conversations and message logs to resume a session.
-- **Response (200 OK)**:
-  ```json
-  {
-    "visitorName": "Jane Doe",
-    "conversationId": "65f3a09f...",
-    "messages": [
-      { "sender": "ai", "text": "Hi Jane! How can I help you?", "createdAt": "2026-06-07T10:00:00Z" }
-    ]
-  }
-  ```
+**Request Body**:
+```json
+{
+  "name": "Jane Doe",
+  "profession": "Founder",
+  "goal": "Pricing check"
+}
+```
 
-### 3. Send Message (`POST /api/widget/chat`)
-Submits a message to the assistant. The backend automatically prefixes the system instructions with the visitor's profile details.
-- **Request Body**:
-  ```json
-  {
-    "visitorId": "65f3a09e...",
-    "conversationId": "65f3a09f...",
-    "text": "Tell me about your pricing."
-  }
-  ```
-
-### 4. Admin Analytics (`GET /api/analytics`)
-Aggregates statistical totals for display on the Admin dashboard.
-- **Response (200 OK)**:
-  ```json
-  {
-    "totalVisitors": 12,
-    "totalConversations": 14,
-    "totalMessages": 82,
-    "professionBreakdown": [
-      { "_id": "Founder", "count": 6 }
-    ]
-  }
-  ```
+**Response (201 Created)**:
+```json
+{
+  "visitorId": "65f3a09e...",
+  "conversationId": "65f3a09f...",
+  "visitorName": "Jane Doe"
+}
+```
 
 ---
+### **2. Fetch History**
+**Endpoint**: `GET /api/widget/history/:visitorId`
+**Description**: Retrieves previous conversations and message logs to resume a session.
 
-## ☁️ Production Deployment Guide
-
-Since the project compiles the React client into the Express backend's static directory, the entire application can run on a **single server port** in production.
-
-### Step 1: Build the React Frontend
-Navigate to the `frontend/` directory and compile the bundle:
-```bash
-cd frontend
-npm install
-npm run build
+**Response (200 OK)**:
+```json
+{
+  "visitorName": "Jane Doe",
+  "conversationId": "65f3a09f...",
+  "messages": [
+    { "sender": "ai", "text": "Hi Jane! How can I help you?", "createdAt": "2026-06-07T10:00:00Z" }
+  ]
+}
 ```
-This generates a static bundle inside `frontend/dist/`. The Express backend serves this folder automatically on the main port.
 
-### Step 2: Deploy to Render (Web Service)
-1. Push your repository to GitHub.
-2. Log into [Render](https://render.com/) and create a new Web Service.
-3. Link your GitHub repository and set the following parameters:
-   - **Build Command**: `npm run install-all && npm run build --prefix frontend`
-   - **Start Command**: `npm start --prefix server`
-4. Add the following Environment Variables in the Render dashboard:
-   - `MONGO_URI` = your MongoDB connection string
-   - `GROQ_API_KEY` = your Groq API key
-   - `ADMIN_PASSWORD` = your custom password (defaults to `varta123`)
+---
+### **3. Send Message**
+**Endpoint**: `POST /api/widget/chat`
+**Description**: Submits a message to the assistant. The backend automatically prefixes the system instructions with the visitor's profile details.
+
+**Request Body**:
+```json
+{
+  "visitorId": "65f3a09e...",
+  "conversationId": "65f3a09f...",
+  "text": "Tell me about your pricing."
+}
+```
+
+**Response (200 OK)**:
+```json
+{
+  "reply": "Hi Jane! Our pricing starts at $10/month. Would you like a detailed breakdown?"
+}
+```
+
+---
+### **4. Admin Analytics**
+**Endpoint**: `GET /api/analytics`
+**Description**: Aggregates statistical totals for display on the Admin dashboard.
+
+**Response (200 OK)**:
+```json
+{
+  "totalVisitors": 12,
+  "totalConversations": 14,
+  "totalMessages": 82,
+  "professionBreakdown": [
+    { "_id": "Founder", "count": 6 },
+    { "_id": "Developer", "count": 4 }
+  ]
+}
+```
+
+---
+### **5. Search Conversations**
+**Endpoint**: `GET /api/admin/search?q=query`
+**Description**: Search for conversations by visitor name, profession, or goal.
+
+**Response (200 OK)**:
+```json
+{
+  "results": [
+    {
+      "visitorId": "65f3a09e...",
+      "visitorName": "Jane Doe",
+      "profession": "Founder",
+      "goal": "Pricing check",
+      "messages": [...]
+    }
+  ]
+}
+```
+---
+## 🛠️ **Tech Stack**
+
+| Category       | Technologies          |
+|----------------|-----------------------|
+| **Frontend**   | React.js, Vite, Bootstrap 5 |
+| **Backend**    | Node.js, Express.js   |
+| **Database**   | MongoDB, Mongoose     |
+| **AI**         | Groq API              |
+| **Styling**    | Custom CSS, Bootstrap |
+| **Deployment** | Render, Heroku, AWS   |
+
+---
+## 💡 **Tips & Best Practices**
+- **Security**: Always **customize** the `ADMIN_PASSWORD` in `.env` for production.
+- **Performance**: Use **Groq API** for **ultra-fast LLM responses**.
+- **Scalability**: Deploy on **Render, Heroku, or AWS** for seamless scaling.
+- **Customization**: Modify the **Bootstrap theme** or **CSS** to match your brand.
+- **Monitoring**: Use tools like **PM2** or **Docker** for process management.
+
+---
+## 📜 **License**
+This project is **open-source** and available under the **[MIT License](LICENSE)**.
+
+---
+## 🤝 **Contributing**
+Contributions are **welcome**! Please:
+1. Fork the repository.
+2. Create a **feature branch** (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m "Add your feature"`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a **Pull Request**.
+
+---
+## 📧 **Support**
+For issues or questions:
+- Open an **issue** on [GitHub](https://github.com/pushpakrai/ChatBot-AI-/issues).
+- Contact the maintainers at **pushpakrai@example.com**.
+
+---
+## 📚 **Additional Resources**
+- [Groq API Documentation](https://console.groq.com/docs)
+- [MongoDB Atlas Setup](https://www.mongodb.com/atlas/database)
+- [React.js Documentation](https://react.dev/)
+- [Express.js Documentation](https://expressjs.com/)
